@@ -4,7 +4,7 @@ const sequelize = require('./config/db.config.cjs')
 const dotenv = require('dotenv')
 dotenv.config()
 
-let port = 3000;
+let port = process.env.DB_PORT || 3000;
 
 
 
