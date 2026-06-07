@@ -79,7 +79,7 @@ try {
         })
     }
 
-    let coverImage = req.file ?`${process.env.BASE_URL}/uploads/${req.file.filename}`: blog.coverImage
+    let coverImage = req.file ? req.file.path: blog.coverImage
 
    
     await blog.update({
