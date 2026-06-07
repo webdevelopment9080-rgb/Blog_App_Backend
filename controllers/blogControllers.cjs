@@ -37,39 +37,24 @@ try {
 
 
 }
-
-let getBlogs = async (req, res)=>{
-
-try {
-    
+let getBlogs = async (req, res) => {
+  try {
     let blogs = await BLOG.findAll({
-        include:[{
-            model:USER,
-            attributes:['name', "email"]
-        }]
-    })
-
-    if (!blogs.length) {
-        return res.status(404).json({
-            message:"Blogs Not Found"
-        })    
-    }
+      include: [{ model: USER, attributes: ['name', 'email'] }]
+    });
 
     return res.status(200).json({
-        message:"Blogs Returned Successfully",
-        data:blogs
-    })
+      message: "Blogs Returned Successfully",
+      data: blogs
+    });
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: "Internal Server Error" });
+  }
+};
 
 
-} catch (error) {
-    console.log(error)
-    return res.status(500).json({
-        message:"Internal Server Error"
-    })
-}
-
-
-}
 
 let updateBlog = async (req, res)=>{
 
