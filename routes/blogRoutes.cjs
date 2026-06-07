@@ -14,7 +14,7 @@ blogRoutes.post("/create", authentication, authorization(['author']),  upload.si
     try {
       const { title, content } = req.body;
 
-      const imageUrl = req.file ? req.file.path : null;
+const imageUrl = req.file ? req.file.path : null;
       
       const blog = await BLOG.create({
         title,
